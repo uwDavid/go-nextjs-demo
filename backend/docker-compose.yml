@@ -1,0 +1,22 @@
+services: 
+
+  psdb:
+    container_name: psdb
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+    ports: 
+      - "5432:5432"
+    volumes:
+      - ./psqldb:/var/lib/postgresql/data
+
+  adminer: 
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports: 
+      - 8080:8080
+    depends_on: 
+      - psdb
