@@ -3,8 +3,10 @@ package utils
 import "github.com/spf13/viper"
 
 type Config struct {
-	DBdriver string `mapstructure:"DB_DRIVER"`
-	DBsource string `mapstructure:"DB_SOURCE"`
+	DBdriver      string `mapstructure:"DB_DRIVER"`
+	DBsource      string `mapstructure:"DB_SOURCE"`
+	DBsource_live string `mapstructure:"DB_SOURCE_LIVE"`
+	Signing_key   string `mapstructure:"SIGNING_KEY"`
 }
 
 // using viper to initialize config

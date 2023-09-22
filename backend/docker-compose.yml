@@ -10,7 +10,20 @@ services:
     ports: 
       - "5432:5432"
     volumes:
-      - ./psqldb:/var/lib/postgresql/data
+      - psql_data:/var/lib/postgresql/data
+  
+  psdb_live:
+    container_name: psdb_live
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+    ports: 
+      - "5433:5432"
+    volumes:
+      - psql_data_live:/var/lib/postgresql/data
+    
 
   adminer: 
     container_name: adminer
@@ -20,3 +33,7 @@ services:
       - 8080:8080
     depends_on: 
       - psdb
+
+volumes: 
+  psql_data:
+  psql_data_live:
