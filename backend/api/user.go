@@ -17,6 +17,7 @@ type User struct {
 func (u User) router(server *Server) {
 	u.server = server
 
+	// To access anything user-related, we have to go through /users
 	serverGroup := server.router.Group("/users", AuthenticatedMiddleWare())
 	serverGroup.GET("", u.listUsers)
 	serverGroup.GET("me", u.getLoggedInUser)

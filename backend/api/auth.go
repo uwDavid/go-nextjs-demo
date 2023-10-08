@@ -23,14 +23,15 @@ func (a Auth) router(server *Server) {
 	serverGroup.POST("register", a.register)
 }
 
+// use binding, gin's auto check
 type UserParams struct {
 	Email    string `json:"email" binding:"required,email"`
 	Password string `json:"password" binding:"required"`
 }
 
 func (a *Auth) register(c *gin.Context) {
-	user := new(UserParams)
 	// another way to instantiate:  var user UserParams
+	user := new(UserParams)
 
 	if err := c.ShouldBindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

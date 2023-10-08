@@ -1,3 +1,6 @@
+server: 
+	go run main.go
+	
 c-m: 
 	# create a new migration
 	migrate create -ext sql -dir db/migrations -seq $(name)

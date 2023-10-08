@@ -19,6 +19,7 @@ func AuthenticatedMiddleWare() gin.HandlerFunc {
 		}
 
 		tokenSplit := strings.Split(token, " ")
+
 		if len(tokenSplit) != 2 || strings.ToLower(tokenSplit[0]) != "bearer" {
 			c.JSON(http.StatusUnauthorized, gin.H{"message": "invalid token, expects bearer token"})
 			c.Abort()
