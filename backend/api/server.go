@@ -7,6 +7,7 @@ import (
 	db "nextjs/backend/db/sqlc"
 	"nextjs/backend/utils"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 )
@@ -37,6 +38,8 @@ func NewServer(envPath string) *Server {
 
 	// Initialize Gin
 	g := gin.Default()
+
+	g.Use(cors.Default())
 
 	return &Server{
 		queries: q,
