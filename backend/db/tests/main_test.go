@@ -12,7 +12,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var testQuery *db.Queries
+var testQuery *db.Store
 
 func TestMain(m *testing.M) {
 	config, err := utils.LoadConfig("../..")
@@ -28,7 +28,7 @@ func TestMain(m *testing.M) {
 		fmt.Println("Couldn't ping db: ", err)
 	}
 
-	testQuery = db.New(conn)
+	testQuery = db.NewStore(conn)
 
 	os.Exit(m.Run())
 }

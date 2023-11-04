@@ -35,4 +35,4 @@ start:
 	CompileDaemon -command="./nextjs"
 
 test: 
-	go test -v -cover ./...
+	go test -v -failfast ./db/tests
